@@ -3,9 +3,9 @@
 
 // })
 
-
+import * as dotenv from 'dotenv'
 // {//method 2 for connected to db
-// require('dotenv').config()
+dotenv.config()
 // const mysql = require('mysql2')
 // const connection = mysql.createConnection(process.env.DATABASE_URL)
 // console.log('Connected to PlanetScale!')
@@ -13,9 +13,10 @@
 
 // export default connection;
 //}
+// console.log(process.env)
 import {Sequelize} from "sequelize"
-const seq=new Sequelize("stayhub","y0rsf98dprzaipzw4aey","pscale_pw_Q7bjllzdcrzTqxIH7P3wcg2E9bF5WeycK81E4AdEBtD",{
-    host:"aws.connect.psdb.cloud",
+const seq=new Sequelize(process.env.DATABASE,process.env.URNAME,process.env.PASSWORD,{
+    host:process.env.HOST,
     dialect:"mysql",
     "dialectOptions": {
         "ssl": {
