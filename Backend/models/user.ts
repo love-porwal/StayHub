@@ -20,11 +20,18 @@ import seq from "../config/db";
 import { DataTypes, Model, Sequelize } from 'sequelize';
 import db from '../config/db';
 
+enum UserRole {
+  Admin = "admin",
+  Host = "host",
+  User = "user",
+}
+
 interface UserAttributes {
   name: string;
   email: string;
   mobile: number;
   password: string;
+  role:UserRole;
 }
 
 class User extends Model<UserAttributes> {}
@@ -40,12 +47,17 @@ User.init(
       allowNull: false,
     },
     mobile: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
     password: {
+      type: DataTypes.STRING(1234),
+      allowNull: false,
+    },
+    role: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: UserRole.User, // Set the default value to "user"
     },
   },
   {
