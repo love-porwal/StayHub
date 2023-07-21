@@ -1,4 +1,4 @@
-import User from "../models/user";
+import Host from "../models/host";
 import express, { Request, Response } from "express";
 import { WhereOptions } from "sequelize";
 import jwt from "jsonwebtoken";
@@ -8,41 +8,41 @@ import * as dotenv from "dotenv";
 import client from "../config/redis";
 dotenv.config();
 
-const UserRouter = express.Router();
+const HostRouter = express.Router();
 
-enum UserRole {
-  Admin = "admin",
-  Host = "host",
-  User = "user",
-}
+enum HostRole {
+    Admin = "admin",
+    Host = "host",
+    User = "user",
+  }
 
-interface UserAttributes {
+interface HostAttributes {
   id: string;
   name: string;
   email: string;
   mobile: number;
   password: string;
-  role:UserRole;
+  role:HostRole;
 }
 
-//<<<<<<<<<<<<<<<<<<-------------to get users----------------->>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<-------------to get hosts----------------->>>>>>>>>>>>>>>>
 
-UserRouter.get("/", async (req, res) => {
-  let users = await User.findAll();
-  res.status(200).send(users);
+HostRouter.get("/", async (req, res) => {
+  let hosts = await Host.findAll();
+  res.status(200).send(hosts);
 });
 
-//<<<<<<<<<<<<<<<<------------to create user-------------->>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<------------to create host-------------->>>>>>>>>>>>>>>>
 
-UserRouter.post("/register", async (req: Request, res: Response) => {
-  const { name, email, mobile, password,role } = req.body as UserAttributes;
+HostRouter.post("/register", async (req: Request, res: Response) => {
+  const { name, email, mobile, password,role } = req.body as HostAttributes;
   try {
-    let data = await User.findOne({ where: { email } });
+    let data = await Host.findOne({ where: { email } });
 
     if (data) {
       return res
         .status(200)
-        .send({ msg: "user already registered Please login first" });
+        .send({ msg: "host already registered Please login first" });
     }
 
     bcrypt.hash(password,5,async function(err,hash){
@@ -51,15 +51,15 @@ UserRouter.post("/register", async (req: Request, res: Response) => {
             return res.status(404).send({ msg: "something went wrong", err });
           } else {
             console.log(hash);
-            let user = User.build({
+            let host = Host.build({
               name,
               email,
               mobile,
               password: hash,
               role
             });
-            await user.save();
-            return res.status(201).send("user registered successfully");
+            await host.save();
+            return res.status(201).send("host registered successfully");
           }
         });
       } catch (error) {
@@ -68,9 +68,9 @@ UserRouter.post("/register", async (req: Request, res: Response) => {
       }
     });
     
-//<<<<<<<<<<<<--------------login user ------------->>>>>>>>>>>>
+//<<<<<<<<<<<<--------------login host ------------->>>>>>>>>>>>
 
-    UserRouter.post("/login", async (req: Request, res: Response) => {
+    HostRouter.post("/login", async (req: Request, res: Response) => {
         interface logindata {
           email: string;
           password: string;
@@ -79,23 +79,23 @@ UserRouter.post("/register", async (req: Request, res: Response) => {
         let { email, password } = req.body as logindata;
       
         try {
-          let user = await User.findOne({ where: { email } });
-          if (!user) {
-            return res.status(404).send({ msg: "user not found" });
+          let host = await Host.findOne({ where: { email } });
+          if (!host) {
+            return res.status(404).send({ msg: "host not found" });
           }
       
           // remember to check for id
-          bcrypt.compare(password, user.dataValues.password, function (err, result) {
+          bcrypt.compare(password, host.dataValues.password, function (err, result) {
             if (result) {
               var token = jwt.sign(
-                { email: user.dataValues.email },
+                { email: host.dataValues.email },
                 process.env.secret_key,
                 { expiresIn: "2h" }
               );
               console.log(token);
               res
                 .status(201)
-                .send({ msg: "logi success", token, name: user.dataValues.name });
+                .send({ msg: "logi success", token, name: host.dataValues.name });
             } else {
               console.log(err);
               res.status(404).send({ mag: "Incorrect pasword" });
@@ -107,9 +107,9 @@ UserRouter.post("/register", async (req: Request, res: Response) => {
         }
       });
       
-// <<<<<<<<<<<<<-----------------logout user---------------------->>>>>>>>>>>>>>>>
+// <<<<<<<<<<<<<-----------------logout host---------------------->>>>>>>>>>>>>>>>
       
-      UserRouter.get("/logout", auth, async (req: Request, res: Response) => {
+      HostRouter.get("/logout", auth, async (req: Request, res: Response) => {
         let token = req.body.token;
       
         await client.SADD("tokenBlacklist", token);
@@ -121,53 +121,53 @@ UserRouter.post("/register", async (req: Request, res: Response) => {
 
 //<<<<<<<<<<<<<<<------------to delete something--------------->>>>>>>>>>>>>>>>>
 
-UserRouter.delete("/:id", async (req: Request, res: Response) => {
+HostRouter.delete("/:id", async (req: Request, res: Response) => {
     let id = req.params.id;
   
     try {
-      const whereClause: WhereOptions<UserAttributes> = {
-        id: id as unknown as UserAttributes["id"],
+      const whereClause: WhereOptions<HostAttributes> = {
+        id: id as unknown as HostAttributes["id"],
       };
-      let user = await User.destroy({
+      let host = await Host.destroy({
         where: whereClause,
       });
   
-      res.status(200).send({ msg: "user is deleted", user });
+      res.status(200).send({ msg: "host is deleted", host });
     } catch (error) {
       console.log(error.message);
-      res.status(404).send({ msg: "can't delete user", error });
+      res.status(404).send({ msg: "can't delete host", error });
     }
   });
   
   //<<<<<<<<<<---------------to update something--------------->>>>>>>>>>>>>>>
   
-  UserRouter.patch("/:id", async (req: Request, res: Response) => {
+  HostRouter.patch("/:id", async (req: Request, res: Response) => {
     let id = req.params.id;
     let data = req.body;
     try {
-      const whereClause: WhereOptions<UserAttributes> = {
-        id: id as unknown as UserAttributes["id"],
+      const whereClause: WhereOptions<HostAttributes> = {
+        id: id as unknown as HostAttributes["id"],
       };
-      let user = await User.update(data, {
+      let host = await Host.update(data, {
         where: whereClause,
       });
   
-      res.status(201).send({ msg: "updation successful", user });
+      res.status(201).send({ msg: "updation successful", host });
     } catch (error) {
       console.log(error.message);
-      res.status(404).send({ msg: "can't update user", error });
+      res.status(404).send({ msg: "can't update host", error });
     }
   });
   
   //<<<<<<<<<<<<<-----------delete a table----------->>>>>>>>>>>>>>>
   
-  UserRouter.delete("/delete/D", async (req: Request, res: Response) => {
+  HostRouter.delete("/delete/D", async (req: Request, res: Response) => {
     try {
-      await User.drop();
+      await Host.drop();
       res.send("table is drouped");
     } catch (error) {
       res.send("can't droup table");
     }
   });
-  export default UserRouter;
+  export default HostRouter;
   
