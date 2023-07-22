@@ -1,13 +1,14 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
 import db from '../config/db';
 
+
 enum HostRole {
   Admin = "admin",
   Host = "host",
   User = "user",
 }
-
 interface HostAttributes {
+  id:number;
   name: string;
   email: string;
   mobile: number;
@@ -19,6 +20,11 @@ class Host extends Model<HostAttributes> {}
 
 Host.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -38,7 +44,7 @@ Host.init(
     role: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: HostRole.Host, // Set the default value to "user"
+      defaultValue: HostRole.Host,  
     },
   },
   {
