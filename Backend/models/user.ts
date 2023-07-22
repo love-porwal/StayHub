@@ -1,24 +1,8 @@
 import seq from "../config/db";
-// import sequelize from "sequelize"
-
-//method-1
-// interface users {
-//     name:string,
-//     email:string,
-//     mobile:number,
-//     password:string
-// }
-
-// const user = seq.define("users",{
-//     "name":sequelize.STRING,
-//     "email":sequelize.STRING,
-//     "mobile":sequelize.INTEGER,
-//     "password":sequelize.STRING,
-// })
-
-// export default user
+ 
 import { DataTypes, Model, Sequelize } from 'sequelize';
 import db from '../config/db';
+
 
 enum UserRole {
   Admin = "admin",
@@ -26,18 +10,27 @@ enum UserRole {
   User = "user",
 }
 
+
 interface UserAttributes {
+  id:number;
   name: string;
   email: string;
   mobile: number;
   password: string;
   role:UserRole;
+
 }
 
 class User extends Model<UserAttributes> {}
 
 User.init(
   {
+
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -57,8 +50,9 @@ User.init(
     role: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: UserRole.User, // Set the default value to "user"
+      defaultValue: UserRole.User,  
     },
+   
   },
   {
     sequelize: db,
@@ -67,4 +61,3 @@ User.init(
 );
 
 export default User;
-
