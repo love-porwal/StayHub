@@ -151,58 +151,6 @@ UserRouter.patch("/slots/:slotId",auth,async(req: Request, res: Response)=>{
     }
   })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //<<<<<<<<<<<<<<<------------to delete something--------------->>>>>>>>>>>>>>>>>
 
 UserRouter.delete("/:id", async (req: Request, res: Response) => {
@@ -248,9 +196,9 @@ UserRouter.patch("/:id", async (req: Request, res: Response) => {
 UserRouter.delete("/delete/D", async (req: Request, res: Response) => {
   try {
     await User.drop();
-    res.send("table is drouped");
+    res.send("table is dropped");
   } catch (error) {
-    res.send("can't droup table");
+    res.send("can't drop a table");
   }
 });
 export default UserRouter;
