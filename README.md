@@ -6,8 +6,8 @@
 **This is an Airbnb clone project that aims to replicate the core functionalities of the Airbnb website. 
 It allows users to Register and book accommodations, list their properties for rent, and manage bookings.**
 
-## Frontend Deployment Link -
-## Backend Deployment Link -
+## Frontend Deployment Link - https://stay-hub-love.vercel.app
+## Backend Deployment Link - https://stayhub-3ojm.onrender.com/
 
 ## Table of Contents
 
