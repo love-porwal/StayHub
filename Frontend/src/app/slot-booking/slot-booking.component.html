@@ -25,6 +25,7 @@
     </div>
     <div id="second-box">
       <!-- Card 2: Show Host Details -->
+      <!-- console.log(item) -->
       <div class="card">
         <div class="card-content">
           <h3>Host Details</h3>
@@ -38,12 +39,21 @@
       <div class="card">
         <div class="card-content">
           <h3>Slot</h3>
-          <p>Name: {{ item?.Host.name }}</p>
-          <p>Email: {{ item?.Host.email }}</p>
-          <p>Mobile: {{ item?.Host.mobile }}</p>
+          <p>Slot No.: {{ item?.id }}</p>
+          <p>Host Name: {{ item?.Host.name }}</p>
+          <button class="btn">{{ buttonText }}</button> <!-- Use property binding to set button text -->
           <!-- Additional slot details if available -->
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <script>
+  let btn = document.querySelector("button")
+  if(item.availableroom) {
+    btn.innerText="Book Now"
+  } else{
+    btn.innerText="Cancle Booking"
+  }
+</script> -->
