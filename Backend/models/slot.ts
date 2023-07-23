@@ -2,7 +2,7 @@ import sequelize, { DataTypes, Model, Sequelize, Optional } from "sequelize";
 import seq from "../config/db";
 import Host from './host';
  
-const Slot = seq.define("products", {
+const Slot = seq.define("slots", {
   propId:sequelize.INTEGER,
   hostId: sequelize.INTEGER,
   userId:sequelize.INTEGER,

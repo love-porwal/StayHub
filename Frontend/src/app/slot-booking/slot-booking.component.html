@@ -1,0 +1,49 @@
+<div id="cont">
+  <div class="container">
+    <!-- Card 1: Show Details -->
+    <div id="first-box">
+      <div class="card">
+        <!-- Album Images -->
+        <div class="album-images">
+          <img
+            *ngFor="let image of parseAlbum(item?.album)"
+            [src]="image"
+            alt="Image"
+          />
+        </div>
+        <div class="card-content">
+          <h3>{{ item?.name }}</h3>
+          <p>Address: {{ item?.address }}</p>
+          <p>Available Rooms: {{ item?.availableroom }}</p>
+          <p>Price: {{ item?.price }}</p>
+          <p>Type: {{ item?.type }}</p>
+          <p>
+            Current Rating: {{ item.currating > 0 ? item.currating : "none" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="second-box">
+      <!-- Card 2: Show Host Details -->
+      <div class="card">
+        <div class="card-content">
+          <h3>Host Details</h3>
+          <p>Name: {{ item?.Host.name }}</p>
+          <p>Email: {{ item?.Host.email }}</p>
+          <p>Mobile: {{ item?.Host.mobile }}</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Show All Slots -->
+      <div class="card">
+        <div class="card-content">
+          <h3>Slot</h3>
+          <p>Name: {{ item?.Host.name }}</p>
+          <p>Email: {{ item?.Host.email }}</p>
+          <p>Mobile: {{ item?.Host.mobile }}</p>
+          <!-- Additional slot details if available -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

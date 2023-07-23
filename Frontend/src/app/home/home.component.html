@@ -1,0 +1,32 @@
+<div id="home-cont">
+  <div class="card-container">
+    <div
+      class="card"
+      *ngFor="let item of props"
+      (click)="navigateToDetails(item)"
+    >
+    <!-- Album Images -->
+      <div class="card-content">
+        <div class="album-images">
+          <img
+            width="100%"
+            *ngFor="let image of parseAlbum(item.album)"
+            [src]="image"
+            alt="Image"
+          />
+        </div>
+        <h3>{{ item.name }}</h3>
+        <p>Address: {{ item.address }}</p>
+        <p>Available Rooms: {{ item.availableroom }}</p>
+        <p>Price: {{ item.price }}</p>
+        <p>Type: {{ item.type }}</p>
+        <p>
+          Current Rating: {{ item.currating > 0 ? item.currating : "none" }}
+        </p>       
+      </div>
+    </div>
+  </div>
+  <!-- <div class="card" *ngFor="let D of props">
+           {{D.id}}
+    </div> -->
+</div>
