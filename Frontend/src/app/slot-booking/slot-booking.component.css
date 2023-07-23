@@ -1,0 +1,198 @@
+#cont{
+    height: auto;
+    width: 100%;
+     margin-top: 5%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    /* border: 1px solid red; */
+    /* justify-content: center; Horizontally center the inner div */
+  /* align-items: center; */
+  }
+  /* Individual card styles */
+  #first-box,#second-box{
+    /* border: 1px solid rgb(60, 255, 0); */
+  margin: 0px 20px;
+
+/* margin: auto; */
+/* align-items: center; */
+  }
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* width: 60%; */
+  margin: 20px;
+  cursor: pointer;
+}
+
+/* Album images container */
+.album-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Images inside album container */
+.album-images img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+/* Card content styles */
+.card-content {
+  padding-bottom: 20px;
+  /* border: 1px solid #0e0d0d; */
+  text-align: center;
+}
+h3 {
+  color: #00c4cc;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+p {
+  color: #ff1493;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.card-content p:first-child {
+  margin-top: 10px;
+}
+
+.card-content p:last-child {
+  margin-bottom: 0;
+}
+
+  /* .card {
+    width: 300px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 10px;
+  } */
+  
+  /* .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  
+  .album-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  
+  .album-images img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+   */
+  /* Details Page Specific Styling */
+  /* :host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .details-card {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .details-card .card {
+    margin: 0;
+  }
+  
+  .details-card .card h3 {
+    text-align: center;
+    color: #007BFF;
+  }
+  
+  .details-card .card-content {
+    text-align: center;
+  }
+  
+  .details-card .album-images {
+    justify-content: center;
+  }
+  
+  /* Host Details Card */
+  /* .host-card {
+    max-width: 400px;
+  }
+  
+  /* Available Slots Card */
+  /* .slots-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  /* }
+   
+     .slots-card .card {
+    flex-basis: calc(33.33% - 20px);
+     } 
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
+      grid-template-columns: repeat(1,1fr);
+      gap: 3%;
+    }
+  
+    .card {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
+  
+    .details-card {
+      max-width: 100%;
+    }
+  
+    .slots-card .card {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .card {
+      margin: 5px;
+    }
+  
+    .album-images {
+      justify-content: flex-start;
+    }
+  
+    .album-images img {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .slots-card .card {
+      flex-basis: calc(100% - 10px);
+    }
+  }
+  

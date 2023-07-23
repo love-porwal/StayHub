@@ -1,0 +1,49 @@
+<p>login works!</p>
+<div class="background"></div>
+<div class="container">
+    <div class="item">
+        <h2 class="logo"><i class='bx bxl-xing'></i>Love Porwal</h2>
+        <div class="text-item">
+            <h2>Welcome!<br><span>StayHub</span></h2>
+            <p>
+                Airbnb is a popular online marketplace that connects travelers with unique accommodation options and experiences all around the world.</p>
+            <div class="social-icon">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="login-section">
+        <div class="form-box login"  >
+            <!-- Login form content here -->
+            <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h2>Sign In</h2>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" formControlName="email" required>
+                    <label >Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+                    <input type="password" formControlName="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-password">
+                    <label for=""><input type="checkbox" formControlName="rememberMe">Remember Me</label>
+                    <a href="#">Forget Password</a>
+                </div>
+                <button class="btn">Login In</button>
+                <div class="create-account">
+                    <p>Create A New Account? <a routerLink="/signup" routerLinkActive="active" >Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+
+        
+        <!-- <app-tc *ngIf="isRegistering" ></app-tc> -->
+       
+    </div>
+</div>
