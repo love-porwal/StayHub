@@ -36,7 +36,7 @@ It allows users to Register and book accommodations, list their properties for r
 
 - **Frontend:** HTML | CSS | Javascript | Angular | External CSS library
 
-- **Server:** Node.js | Express.js | MySQL | Typescript | Redis | JWT
+- **Server:** Node.js | Express.js | MySQL | sequelize | Typescript | Redis | JWT | PlanetScale | Generative-AI
 
 - **github:** To maintain repository and collabration and version control.
 
