@@ -54,3 +54,18 @@ For any questions or feedback, please feel free to contact me:
 
 ## Usage
 
+# ER diagram
+![ER diagram](https://github.com/love-porwal/StayHub/assets/112820391/1bd10e0a-47d5-4571-be68-79699d5d289e)
+
+# Home-Page
+![Home-Page](https://github.com/love-porwal/StayHub/assets/112820391/7d9d7059-c9b8-4332-b429-7e8f26e75e23)
+
+# Login
+![Login](https://github.com/love-porwal/StayHub/assets/112820391/298caa1b-3cdd-403e-bf05-c06e10e36d85)
+
+# Slot-Booking
+![Slot-Booking](https://github.com/love-porwal/StayHub/assets/112820391/b403d71a-ed0e-4743-9256-f28c74e233e1)
+
+# Footer
+![Footer](https://github.com/love-porwal/StayHub/assets/112820391/1fe3497b-9ce1-4cdf-98fb-10f53a6743c4)
+
