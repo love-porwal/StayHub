@@ -1,20 +1,56 @@
-<nav>
+<!-- <nav>
 	<input id="nav-toggle" type="checkbox">
-	<div class="logo">Stay<strong>Hub</strong></div>
-	<ul class="links">
+	<div routerLink="/home" routerLinkActive="active" class="logo">Stay<strong>Hub</strong></div>
+  <ul class="links">
 		<li><a routerLink="/home" routerLinkActive="active">Home</a></li>
 		<li><a>About</a></li>
 		<li><a routerLink="/login" routerLinkActive="active">Login</a></li>
     
 		<!-- <li><a href="#projects">Projects</a></li>
 		<li><a href="#contact">Contact</a></li> -->
-	</ul>
+	<!-- </ul>
 	<label for="nav-toggle" class="icon-burger">
 		<div class="line"></div>
 		<div class="line"></div>
 		<div class="line"></div>
 	</label>
+</nav> --> 
+<!-- <nav>
+  <input id="nav-toggle" type="checkbox">
+  <div routerLink="/home" routerLinkActive="active" class="logo">Stay<strong>Hub</strong></div>
+  <ul class="links">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a>About</a></li>
+    <li *ngIf="isLoggedIn; else loginLink"><a>Hello, {{ userName }}</a></li>
+    <ng-template #loginLink><li><a routerLink="/login" routerLinkActive="active">Login</a></li></ng-template>
+  </ul>
+  <label for="nav-toggle" class="icon-burger">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </label>
+</nav> -->
+<nav>
+  <input id="nav-toggle" type="checkbox">
+  <div routerLink="/home" routerLinkActive="active" class="logo">Stay<strong>Hub</strong></div>
+  <ul class="links">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a>About</a></li>
+    <ng-container *ngIf="isLoggedIn; else loginLink">
+      <li><a>Hello, {{ userName }}</a></li>
+      <li><a id="logout" (click)="logout()">Logout</a></li>
+    </ng-container>
+    <ng-template #loginLink>
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    </ng-template>
+  </ul>
+  <label for="nav-toggle" class="icon-burger">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </label>
 </nav>
+
 
 <!-- <div class="container">
 	<img src="https://picsum.photos/id/559/1000/1000" alt="">

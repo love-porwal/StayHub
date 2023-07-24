@@ -160,6 +160,7 @@ body{
     margin: -15px 0 15px ;
     display: flex;
     justify-content: space-between;
+        margin-bottom: 20px;
 }
 .remember-password label input{
     accent-color: #fff;

@@ -33,6 +33,9 @@ nav .logo {
   font-size: 24px;
   color: #fff;
 }
+.logo:hover,#logout {
+  cursor: pointer;
+}
 strong {
   background: linear-gradient(45deg, #00c4cc, #ff1493);
   padding: 3px;
