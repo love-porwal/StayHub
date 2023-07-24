@@ -25,7 +25,6 @@
     </div>
     <div id="second-box">
       <!-- Card 2: Show Host Details -->
-      <!-- console.log(item) -->
       <div class="card">
         <div class="card-content">
           <h3>Host Details</h3>
@@ -36,24 +35,23 @@
       </div>
 
       <!-- Card 3: Show All Slots -->
-      <div class="card">
-        <div class="card-content">
-          <h3>Slot</h3>
-          <p>Slot No.: {{ item?.id }}</p>
-          <p>Host Name: {{ item?.Host.name }}</p>
-          <button class="btn">{{ buttonText }}</button> <!-- Use property binding to set button text -->
-          <!-- Additional slot details if available -->
+      <div class="slots" >
+
+        <div class="card" *ngFor="let it of Slots">
+          <div class="card-content">
+            <h3>Slot</h3>
+            <p>Slot No: {{ it?.id }}</p>
+
+            <p>Name: {{ item?.Host.name }}</p>
+            <p>Email: {{ item?.Host.email }}</p>
+            <p>Mobile: {{ item?.Host.mobile }}</p>
+            <button class="btn" (click)="bookSlot(it)">{{it.isAvailable ? "Book Now" : "Cancel Booking"}}</button>
+            <!-- Additional slot details if available -->
+          </div>
         </div>
+         
+       
       </div>
     </div>
   </div>
 </div>
-
-<!-- <script>
-  let btn = document.querySelector("button")
-  if(item.availableroom) {
-    btn.innerText="Book Now"
-  } else{
-    btn.innerText="Cancle Booking"
-  }
-</script> -->

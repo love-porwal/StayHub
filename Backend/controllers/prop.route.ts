@@ -6,8 +6,9 @@ import bcrypt from "bcrypt";
 import auth from "../middlewares/auth";
 import * as dotenv from "dotenv";
 import client from "../config/redis";
-import Property from "../models/prop";
+import Property from "../models/property";
 import Host from "../models/host";
+import Slot from "../models/slot";
 // import authorise from "../middlewares/authorize";
 dotenv.config();
 
@@ -67,5 +68,13 @@ propRouter.patch("/image/:id", auth, async (req: Request, res: Response) => {
     res.status(400).send({ msg: error.message });
   }
 });
+
+
+
+propRouter.get("/slots/:propId",async(req:Request,res:Response)=>{
+  let propId=req.params.propId
+  let slots=await Slot.findAll({where:{propId}})
+  res.status(200).send(slots)
+})
 
 export default propRouter;

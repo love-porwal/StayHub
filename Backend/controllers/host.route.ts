@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 import auth from "../middlewares/auth";
 import * as dotenv from "dotenv";
 import client from "../config/redis";
-import Property from "../models/prop";
+import Property from "../models/property";
 import Slot from "../models/slot";
 // import { Property } from "../models/property";
 dotenv.config();
@@ -182,27 +182,6 @@ HostRouter.delete("/dslot",async(req:Request,res:Response)=>{
     res.send("can't droup table");
   }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //<<<<<<<<<<<<<<<------------to delete something--------------->>>>>>>>>>>>>>>>>
 

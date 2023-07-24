@@ -8,7 +8,7 @@ import * as dotenv from "dotenv";
 import client from "../config/redis";
 import Slot from "../models/slot";
 import Host from "../models/host";
-import Property from "../models/prop";
+import Property from "../models/property";
 dotenv.config();
 
 const UserRouter = express.Router();

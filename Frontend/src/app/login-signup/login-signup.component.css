@@ -213,7 +213,7 @@ body{
     outline: none;
     font-size: 16px;
     padding-right: 28px;
-
+color: #f72d7a;
 
 }
 .input-box label{
@@ -243,6 +243,8 @@ body{
     margin: -15px 0 15px ;
     display: flex;
     justify-content: space-between;
+    /* margin-top:15px; */
+    margin-bottom: 20px;
 }
 .remember-password label input{
     accent-color: #fff;

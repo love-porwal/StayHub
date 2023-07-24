@@ -21,29 +21,37 @@
         <div class="login-section">
             
             <div class="form-box login">
-                <form action="">
+                <form action="" (ngSubmit)="onSubmit()">
 
                     <h2>Sign Up</h2>
 
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-user'></i></span>
-                        <input type="text" required>
+                        <input type="text" [(ngModel)]="formData.name" name="name" required>
                         <label >Username</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-envelope'></i></span>
-                        <input type="email" required>
+                        <input type="email" [(ngModel)]="formData.email" name="email" required>
                         <label >Email</label>
                     </div>
                     <div class="input-box">
+                        <span class="icon"><i class='bx bxs-phone' ></i></span>
+                        <input type="number" [(ngModel)]="formData.mobile" name="mobile" required>
+                        <label>Phone</label>
+                    </div>
+                    <div class="input-box">
                         <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
-                        <input type="password" required>
+                        <input type="password" [(ngModel)]="formData.password" name="password" required>
                         <label>Password</label>
                     </div>
                     <div class="remember-password">
                         <label for=""><input type="checkbox">I agree with this statment</label>
                     </div>
-                    <button class="btn">Login In</button>
+                    <div class="remember-password">
+                        <label for=""><input type="checkbox" [(ngModel)]="formData.host" name="host">want to be a host</label>
+                    </div>
+                    <button class="btn">Sign Up</button>
                     <div class="create-account">
                         <p>Already Have An Account? <a routerLink="/login" routerLinkActive="active" class="login-link">Sign In</a></p>
                     </div>

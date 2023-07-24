@@ -2,7 +2,7 @@ import sequelize, { DataTypes, Model, Sequelize, Optional } from "sequelize";
 import seq from "../config/db";
 import Host from './host';
  
-const Property = seq.define("products", {
+const Property = seq.define("property", {
   name: sequelize.STRING,
   address: sequelize.STRING,
   price: sequelize.INTEGER,
