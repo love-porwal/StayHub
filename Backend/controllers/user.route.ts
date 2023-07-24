@@ -38,7 +38,7 @@ UserRouter.post("/register", async (req: Request, res: Response) => {
     if (data) {
       return res
         .status(200)
-        .send({ msg: "user already registered please login" });
+        .send({ msg: "user already registered, Please Login First" });
     }
 
     bcrypt.hash(password, 5, async function (err, hash) {
@@ -90,10 +90,10 @@ UserRouter.post("/login", async (req: Request, res: Response) => {
         console.log(token);
         res
           .status(201)
-          .send({ msg: "logi success", token, name: user.dataValues.name });
+          .send({ msg: "login successfully", token, name: user.dataValues.name });
       } else {
         console.log(err);
-        res.status(404).send({ mag: "Incorrect pasword" });
+        res.status(404).send({ mag: "Incorrect Password" });
       }
     });
   } catch (error) {
@@ -109,7 +109,7 @@ UserRouter.get("/logout", auth, async (req: Request, res: Response) => {
 
   await client.SADD("tokenBlacklist", token);
 
-  res.send({ msg: "logout successful" });
+  res.send({ msg: "logout successfully" });
 });
 
 
@@ -144,7 +144,7 @@ UserRouter.patch("/slots/:slotId",auth,async(req: Request, res: Response)=>{
   let slotId=req.params.slotId
     try {
       let slot=await Slot.update({userId:userID},{where:{id:slotId,userId:null,isAvailable:true}})
-      res.status(201).send({msg:"slot booked succesfully",slot})
+      res.status(201).send({msg:"Slot booked succesfully",slot})
     } catch (error) {
       console.log(error.message);
       res.status(400).json({ msg: error.message });
@@ -164,7 +164,7 @@ UserRouter.delete("/:id", async (req: Request, res: Response) => {
       where: whereClause,
     });
 
-    res.status(200).send({ msg: "user is deleted", user });
+    res.status(200).send({ msg: "User is deleted", user });
   } catch (error) {
     console.log(error.message);
     res.status(404).send({ msg: "can't delete user", error });

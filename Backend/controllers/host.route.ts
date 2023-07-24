@@ -45,7 +45,7 @@ HostRouter.post("/register", async (req: Request, res: Response) => {
     if (data) {
       return res
         .status(200)
-        .send({ msg: "host already registered Please login first" });
+        .send({ msg: "host already registered, Please Login First" });
     }
 
     bcrypt.hash(password, 5, async function (err, hash) {
@@ -98,10 +98,10 @@ HostRouter.post("/login", async (req: Request, res: Response) => {
         console.log(token);
         res
           .status(201)
-          .send({ msg: "logi success", token, name: host.dataValues.name });
+          .send({ msg: "login successfully", token, name: host.dataValues.name });
       } else {
         console.log(err);
-        res.status(404).send({ mag: "Incorrect pasword" });
+        res.status(404).send({ mag: "Incorrect password" });
       }
     });
   } catch (error) {

@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterService {
-  private backendUrl1 =`http://localhost:8080/user/register`
-  private bacendUrl2=`http://localhost:8080/host/register`
+  private backendUrl1 =`https://stayhub-3ojm.onrender.com/user/register`
+  private bacendUrl2=`https://stayhub-3ojm.onrender.com/host/register`
   constructor(private http: HttpClient) {}
 
   signup(formData: any): Observable<any> {

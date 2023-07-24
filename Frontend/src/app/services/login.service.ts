@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private backendUrl1 =`http://localhost:8080/user/login`
-  private bacendUrl2=`http://localhost:8080/host/login`
+  private backendUrl1 =`https://stayhub-3ojm.onrender.com/user/login`
+  private bacendUrl2=`https://stayhub-3ojm.onrender.com/host/login`
   constructor(private http: HttpClient) {}
 
   Login(lgForm: any): Observable<any> {

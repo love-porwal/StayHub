@@ -33,7 +33,7 @@ nav .logo {
   font-size: 24px;
   color: #fff;
 }
-.logo:hover {
+.logo:hover,#logout {
   cursor: pointer;
 }
 strong {
